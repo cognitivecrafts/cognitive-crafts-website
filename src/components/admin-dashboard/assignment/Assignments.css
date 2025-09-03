@@ -1,0 +1,89 @@
+/* Assignments.css */
+
+.assignments-container {
+    background-color: #131313be; /* A dark background */
+    color: #f7fafc;
+}
+
+.assignments-header h1 {
+    color: #ffffff;
+}
+
+.assignments-table-container {
+    background-color: #2320206b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    border-color: #ffffffae;
+    border-width: 1px;
+    box-shadow: 3px #e5e7eb;
+}
+
+.assignments-table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.assignments-table th {
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.assignments-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    vertical-align: middle;
+}
+
+.assignments-table .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.assignments-table .action-buttons a,
+.assignments-table .action-buttons button {
+    color: #cbd5e0;
+    transition: color 0.2s ease-in-out;
+}
+
+.assignments-table .action-buttons a:hover {
+    color: #4299e1; /* blue-400 */
+}
+
+.assignments-table .action-buttons .delete-btn:hover {
+    color: #f56565; /* red-400 */
+}
+
+/* Status Badge */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.status-badge.active {
+    background-color: #2f855a;
+    color: #c6f6d5;
+}
+
+.status-badge.draft {
+    background-color: #b7791f;
+    color: #feebc8;
+}
+
+.status-badge.closed {
+    background-color: #718096;
+    color: #e2e8f0;
+}

@@ -1,0 +1,129 @@
+import React, { useState } from 'react';
+import './signup.css';
+import { BookOpen, Download, BarChart2 } from 'lucide-react';
+import logo from '../../assets/images/logo05.png';
+import pb from '../../lib/pocketbase' // make sure pocketbase.js is in src/
+const SignupPage = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+        confirmPassword: '',
+    });
+
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+        setSuccess('');
+        
+        if (formData.password !== formData.confirmPassword) {
+            setError("Passwords do not match!");
+            return;
+        }
+
+        try {
+            setLoading(true);
+
+            const record = await pb.collection('users').create({
+                username: formData.name,
+                email: formData.email,
+                password: formData.password,
+                passwordConfirm: formData.confirmPassword,
+            });
+
+            setSuccess("Account created successfully! Please log in.");
+            setFormData({ name: '', email: '', password: '', confirmPassword: '' });
+        } catch (err) {
+            console.error(err);
+            setError(err.message || "Something went wrong. Try again.");
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return (
+        <div className="signup-container">
+            <div className="left-side">
+                <div className="branding-content">
+                    <img src={logo} alt="Cognitive Crafts Logo" className="signup-logo-image" />
+                    <div className="font-Poppins text-4xl font-bold text-white mb-4">
+                        Unlock Your Cognitive Journey
+                    </div>
+                    <p className="font-mono">
+                        Create your account and start learning smarter with Cognitive Crafts LMS.
+                    </p>
+                    <ul className="highlights">
+                        <li><BookOpen size={20} /> Access curated video lessons</li>
+                        <li><Download size={20} /> Download notes & resources</li>
+                        <li><BarChart2 size={20} /> Track progress across modules</li>
+                    </ul>
+                </div>
+            </div>
+            <div className="right-side">
+                <div className="signup-card">
+                    <p className="font-bold text-xl">Create Account</p>
+                    <p>Join Cognitive Crafts and craft your learning path.</p>
+                    
+                    {error && <p className="error-message">{error}</p>}
+                    {success && <p className="success-message">{success}</p>}
+
+                    <form onSubmit={handleSubmit}>
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Full Name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            value={formData.password}
+                            onChange={handleChange}
+                            required
+                        />
+                        <input
+                            type="password"
+                            name="confirmPassword"
+                            placeholder="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChange={handleChange}
+                            required
+                        />
+                        <button type="submit" className="signup-button" disabled={loading}>
+                            {loading ? "Signing Up..." : "Sign Up & Start Learning"}
+                        </button>
+                        <div className="divider">──────── or sign up with ────────</div>
+                        <button type="button" className="google-signup-button">
+                            Continue with Google
+                        </button>
+                    </form>
+                    
+                    <div className="login-link">
+                        Already have an account? <a href="/login">Log in here</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default SignupPage;

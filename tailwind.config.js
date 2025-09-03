@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
@@ -51,6 +52,8 @@ module.exports = {
       },
       fontFamily: {
         'sans': ['Poppins', 'system-ui', 'sans-serif'],
+        'Poppins':['Poppins', 'sans-serif'],
+        'mono': ['"Source Code Pro"', 'monospace']
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

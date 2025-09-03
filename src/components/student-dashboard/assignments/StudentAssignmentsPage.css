@@ -1,0 +1,226 @@
+/* src/components/student-dashboard/assignments/StudentAssignmentsPage.css */
+
+.student-assignments-page {
+    color: #ffffff;
+    padding: 1.5rem 2rem;
+    background-color: #1a1d21; /* Slightly different dark background */
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.page-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1.75rem;
+}
+
+.search-bar {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #a0aec0;
+}
+
+.search-bar input {
+    background-color: #2d3748;
+    border: 1px solid #4a5568;
+    color: #ffffff;
+    border-radius: 8px;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    min-width: 300px;
+    transition: all 0.2s;
+}
+
+.search-bar input:focus {
+    outline: none;
+    border-color: #3b82f6;
+}
+
+.progress-summary-card {
+    background-color: rgba(35, 32, 32, 0.418);
+    border: 1px solid #ffffffae;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.progress-summary-card h4 {
+    margin: 0 0 1rem;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    color: #cbd5e0;
+}
+
+.progress-stats span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.progress-bar-container {
+    background-color: #4a5568;
+    border-radius: 99px;
+    height: 12px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar {
+    background-color: #3b82f6;
+    height: 100%;
+    border-radius: 99px;
+}
+
+.progress-label {
+    color: #a0aec0;
+    font-size: 0.9rem;
+}
+
+.filter-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #4a5568;
+}
+
+.filter-tab {
+    background: none;
+    border: none;
+    color: #a0aec0;
+    padding: 0.75rem 1.25rem;
+    cursor: pointer;
+    font-size: 1rem;
+    position: relative;
+    border-radius: 6px 6px 0 0;
+}
+
+.filter-tab.active {
+    color: #ffffff;
+    background-color: #2d3748;
+}
+
+.assignments-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.assignment-card {
+    background-color: rgba(35, 32, 32, 0.418);
+    border: 1px solid #ffffffae;
+    border-radius: 8px;
+    padding: 1.5rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.assignment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0 0 1rem;
+}
+
+.card-breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #a0aec0;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.card-details {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #cbd5e0;
+}
+
+.due-date-overdue {
+    color: #fca5a5;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #4a5568;
+    padding-top: 1.25rem;
+    margin-top: 1.25rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 99px;
+    font-weight: 500;
+}
+
+.status-completed {
+    background-color: #10b981; color: white;
+}
+.status-in-progress {
+    background-color: #3b82f6; color: white;
+}
+.status-overdue {
+    background-color: #ef4444; color: white;
+}
+.status-pending {
+    background-color: #f59e0b; color: white;
+}
+
+.btn-view-details {
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.btn-view-details:hover {
+    background-color: #2563eb;
+}
+
+.no-assignments-message {
+    text-align: center;
+    padding: 2rem;
+    background-color: #2d3748;
+    border-radius: 8px;
+    color: #a0aec0;
+}

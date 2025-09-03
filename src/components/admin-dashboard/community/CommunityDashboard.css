@@ -1,0 +1,160 @@
+.community-dashboard {
+    padding: 2rem;
+    color: #E0E0E0;
+}
+
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-bar h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.header-bar p {
+    color: #a0aec0;
+}
+
+.header-actions .btn {
+    margin-left: 1rem;
+}
+
+.overview-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-card {
+    background-color: #2320206b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ffffffae;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.stat-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #a0aec0;
+    margin-bottom: 0.5rem;
+}
+
+.stat-card h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.stat-card-change {
+    color: #48bb78;
+}
+
+.dashboard-section {
+    margin-bottom: 2.5rem;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.dashboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #2320206b;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.dashboard-table th,
+.dashboard-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #4a5568;
+}
+
+.dashboard-table th {
+    background-color: #1a202c;
+    color: #a0aec0;
+    font-weight: 600;
+}
+
+.status {
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.status.active, .status.published {
+    background-color: #2f855a;
+    color: #c6f6d5;
+}
+
+.status.flagged {
+    background-color: #c53030;
+    color: #fed7d7;
+}
+
+.status.draft {
+    background-color: #718096;
+    color: #e2e8f0;
+}
+
+.actions button {
+    background: none;
+    border: none;
+    color: #a0aec0;
+    cursor: pointer;
+    margin-right: 0.5rem;
+    transition: color 0.2s;
+}
+
+.actions button:hover {
+    color: #6366f1;
+}
+
+.flagged-content-list .flagged-item {
+    background-color: #2320206b;
+    padding: 1rem;
+    border: 1px solid #4a5568;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.flagged-item p {
+    margin: 0;
+}
+
+.flagged-item .actions button {
+    margin-left: 0.5rem;
+}
+
+.btn-approve {
+    color: #48bb78;
+}
+.btn-delete {
+    color: #f56565;
+}
+.btn-mark-safe {
+    color: #4299e1;
+}

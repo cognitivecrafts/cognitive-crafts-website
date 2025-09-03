@@ -1,0 +1,41 @@
+/* VideoDashboard.css */
+
+/* Add a subtle hover effect to the statistics cards */
+.grid > .bg-white.p-4.rounded-lg.shadow {
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.grid > .bg-white.p-4.rounded-lg.shadow:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a hover effect to the table rows for better visual feedback */
+.min-w-full.leading-normal tbody tr:hover {
+    background-color: #f9fafb1c; /* Corresponds to tailwind's gray-50 */
+}
+
+/* Make the action icons in the table more interactive */
+.flex.items-center .text-gray-600 {
+    transition: all 0.2s ease-in-out;
+    border-radius: 9999px; /* full circle */
+    padding: 6px; /* Add some padding to make the hover area larger */
+}
+
+/* Define hover state for view and edit icons */
+.flex.items-center a.text-gray-600:hover {
+    color: #4f46e5; /* indigo-600 */
+    background-color: #eef2ff; /* indigo-100 */
+}
+
+/* Define hover state for the delete icon */
+.flex.items-center button.hover\:text-red-600:hover {
+    color: #dc2626; /* red-600 */
+    background-color: #fee2e2; /* red-100 */
+}
+
+/* Define hover state for the publish/unpublish icon */
+.flex.items-center button.hover\:text-green-600:hover {
+    color: #16a34a; /* green-600 */
+    background-color: #dcfce7; /* green-100 */
+}

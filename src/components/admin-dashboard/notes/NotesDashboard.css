@@ -1,0 +1,116 @@
+/* NotesDashboard.css */
+
+.notes-container {
+    background-color: #131313be; /* A dark background */
+    color: #f7fafc;
+}
+
+.notes-header h1 {
+    color: #ffffff;
+}
+
+.notes-stats-card {
+    background-color: #2320206b;
+    padding: 1rem;
+    border-radius: 8px;
+    /* box-shadow: 0 1px 3px 0 rgba(164, 164, 164, 0.1), 0 1px 2px 0 rgba(163, 163, 163, 0.06); */
+    margin-bottom: 1rem;
+    border-color: #ffffffae;
+    border-width: 1px;
+    box-shadow: 3px #e5e7eb;
+}
+
+.notes-stats-card h2 {
+    color: #a0aec0; /* Lighter text for labels */
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+}
+
+.notes-stats-card p {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.notes-table-container {
+    background-color: #2320206b;
+    padding: 1.5rem;
+    border-radius: 8px;
+    /* box-shadow: 0 1px 3px 0 rgba(164, 164, 164, 0.1), 0 1px 2px 0 rgba(163, 163, 163, 0.06); */
+    margin-bottom: 2rem;
+    border-color: #ffffffae;
+    border-width: 1px;
+    box-shadow: 3px #e5e7eb;
+}
+
+.notes-table {
+    min-width: 100%;
+    border-collapse: collapse;
+}
+
+.notes-table th {
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    background-color: transparent;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #a0aec0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.notes-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e2e8f0;
+    vertical-align: middle;
+}
+
+.notes-table .action-buttons {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.notes-table .action-buttons a,
+.notes-table .action-buttons button {
+    color: #cbd5e0;
+    transition: color 0.2s ease-in-out;
+}
+
+.notes-table .action-buttons a:hover {
+    color: #4299e1; /* blue-400 */
+}
+
+.notes-table .action-buttons .delete-btn:hover {
+    color: #f56565; /* red-400 */
+}
+.notes-table .action-buttons .publish-btn:hover {
+    color: #48bb78; /* green-400 */
+}
+
+/* Status Badge */
+.status-badge-notes {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+.status-badge-notes.active {
+    background-color: #2f855a;
+    color: #c6f6d5;
+}
+
+.status-badge-notes.draft {
+    background-color: #b7791f;
+    color: #feebc8;
+}
+
+.status-badge-notes .icon {
+    margin-right: 0.375rem;
+}

@@ -30,7 +30,7 @@ const Header = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
+      <div className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-20">
         {/* Logo & Title */}
         <Link to="/" className="flex items-center gap-4 text-2xl font-bold">
           <img src={iconImage} alt="Cognitive Crafts" className="w-20 h-20 object-contain" />
@@ -65,6 +65,14 @@ const Header = () => {
             {isDarkMode ? <Sun size={24} /> : <Moon size={24} />}
           </button>
 
+          <Link to="/login" className="text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">
+            Login
+          </Link>
+
+          <Link to="/signup" className="text-gray-600 dark:text-gray-300 hover:text-primary-500 transition-colors">
+            Sign Up
+          </Link>
+
           {/* Mobile Menu Button */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
@@ -78,7 +86,7 @@ const Header = () => {
       {/* Rainbow Gradient Underline with Fade and Glow */}
       <div
         style={{
-          height: '5px',
+          height: '3px',
           width: '100%',
           background: `linear-gradient(90deg, transparent 0%, #ff0000 10%, #ff7f00 23%, #ffff00 36%, #00ff00 50%, #0000ff 64%, #4b0082 77%, #9400d3 90%, transparent 100%)`,
           boxShadow: '0 0 16px 4px rgba(255,0,90,0.18), 0 0 32px 8px rgba(0,153,255,0.10)'
@@ -102,6 +110,7 @@ const Header = () => {
               {item.title}
             </a>
           ))}
+         
         </div>
       )}
     </motion.header>

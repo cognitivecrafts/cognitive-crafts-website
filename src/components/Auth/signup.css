@@ -1,0 +1,129 @@
+.signup-container {
+    display: flex;
+    height: 100vh;
+    background-color: transparent;
+}
+
+.left-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    text-align: center;
+    padding: 2rem;
+}
+
+.branding-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.signup-logo-image {
+    width: 225px;
+    margin-bottom: 2rem;
+}
+
+.branding-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.branding-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.highlights {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Changed to column for vertical alignment */
+    gap: 1rem; /* Spacing between items */
+    align-items: flex-start; /* Align items to the start */
+    text-align: left; /* Align text to the left */
+}
+
+.highlights li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+}
+
+.right-side {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 1.5rem;
+    padding: 2rem;
+    width: 80%;
+    max-width: 400px;
+    border: 1px solid rgba(255, 171, 0, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.signup-card h2 {
+    color: white;
+    margin-bottom: 0.5rem;
+}
+
+.signup-card p {
+    color: #ccc;
+    margin-bottom: 2rem;
+}
+
+form input {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid #ccc;
+    background: #2a2a2a;
+    color: white;
+}
+
+.signup-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    background: linear-gradient(90deg, #ff0000 0%, #ff7f00 50%, #ffff00 100%);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+.divider {
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 1rem;
+}
+
+.google-signup-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid white;
+    border-radius: 0.5rem;
+    background: white;
+    color: black;
+    cursor: pointer;
+    margin-bottom: 2rem;
+}
+
+.login-link {
+    text-align: center;
+    color: #ccc;
+}
+
+.login-link a {
+    color: #ffab00;
+}

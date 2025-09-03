@@ -1,0 +1,170 @@
+/* src/components/student-dashboard/notes/NoteDetailPage.css */
+
+.note-detail-page {
+    padding: 2rem 2.5rem;
+    background-color: #1a1d21;
+    color: #e0e0e0;
+    min-height: 100vh;
+}
+
+.note-detail-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    color: #3b82f6;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+}
+
+.back-button:hover {
+    color: #5fa2ff;
+}
+
+.note-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0 0 0.5rem 0;
+}
+
+.note-breadcrumb {
+    font-size: 1rem;
+    color: #a0a0a0;
+    margin: 0;
+}
+
+.note-breadcrumb a {
+    color: #a0a0a0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.note-breadcrumb a:hover {
+    color: #3b82f6;
+}
+
+.note-info-block {
+    background-color: #25282c;
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+}
+
+.info-item strong {
+    color: #ffffff;
+}
+
+.status-tag {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-completed {
+    background-color: #10b981;
+    color: white;
+}
+
+.status-in-progress {
+    background-color: #f97316;
+    color: white;
+}
+
+.status-pending {
+    background-color: #6b7280;
+    color: white;
+}
+
+.card {
+    background-color: #25282c;
+    padding: 1.5rem 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+}
+
+.card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #ffffff;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.file-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+    text-decoration: none;
+}
+
+.view-btn {
+    background-color: #3b82f6;
+    color: white;
+}
+.view-btn:hover { background-color: #2563eb; }
+
+.download-btn {
+    background-color: #10b981;
+    color: white;
+}
+.download-btn:hover { background-color: #059669; }
+
+.user-actions-area .action-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.user-actions-area .action-btn {
+    background-color: #31353a;
+    color: #e0e0e0;
+}
+
+.user-actions-area .action-btn:hover {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.discussion-placeholder {
+    text-align: center;
+    padding: 2rem;
+    color: #a0a0a0;
+    border: 2px dashed #373b40;
+    border-radius: 8px;
+}

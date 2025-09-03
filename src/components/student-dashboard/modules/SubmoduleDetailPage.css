@@ -1,0 +1,217 @@
+/* src/components/student-dashboard/modules/SubmoduleDetailPage.css */
+
+.submodule-detail-page {
+    padding: 2rem;
+    background-color: #1a1a1a;
+    color: #f7fafc;
+    margin: auto;
+}
+
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    color: #a0aec0;
+    margin-bottom: 1rem;
+}
+
+.breadcrumb a {
+    color: #a0aec0;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb a:hover {
+    color: #3b82f6;
+}
+
+.breadcrumb span {
+    font-weight: 500;
+    color: #e5e7eb;
+}
+
+.submodule-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.submodule-header h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+}
+
+.submodule-main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.right-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.section-card {
+    background-color: #252525;
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 1px solid #3a3a3a;
+}
+
+.section-card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #4a4a4a;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+/* Overview Section */
+.overview-content p {
+    color: #cbd5e0;
+    line-height: 1.6;
+}
+
+.overview-content .info-item {
+    margin-top: 1rem;
+}
+
+/* Video Library */
+.video-player-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background-color: #000;
+    margin-bottom: 1.5rem;
+}
+
+.video-player-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-playlist h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.playlist-item:hover, .playlist-item.active {
+    background-color: #3b82f6;
+}
+
+.playlist-item .play-icon {
+    color: #e5e7eb;
+}
+
+.playlist-item.active .play-icon {
+    color: white;
+}
+
+.playlist-item div p {
+    margin: 0;
+    font-weight: 500;
+}
+
+.playlist-item div span {
+    font-size: 0.8rem;
+    color: #a0aec0;
+}
+
+/* Resources & Assignment */
+.resource-list a, .assignment-task {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background-color: #333;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #e5e7eb;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.resource-list a:hover {
+    background-color: #3f3f3f;
+}
+
+.footer-actions {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #252525;
+    border-radius: 12px;
+    border: 1px solid #3a3a3a;
+}
+
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s;
+}
+
+.btn-primary {
+    background-color: #3b82f6;
+    color: white;
+}
+
+.btn-primary:disabled {
+    background-color: #4a4a4a;
+    color: #9ca3af;
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #4f4f4f;
+    color: #e5e7eb;
+}
+
+@media (max-width: 992px) {
+    .submodule-main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .submodule-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
