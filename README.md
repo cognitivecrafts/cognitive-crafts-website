@@ -9,126 +9,52 @@ The project follows a component-based architecture, making it modular and easy t
 ## Technologies Used
 
 - **React:** Frontend JavaScript library for building user interfaces.
-- **Tailwind CSS:** A utility-first CSS framework for rapid styling.
-- **Framer Motion:** A React library for production-ready animations.
-- **React Router DOM:** For handling navigation (though primarily used for single-page smooth scrolling).
-- **React Helmet Async:** For managing document head tags, including the favicon.
-- **Lucide React:** A library of open-source icons.
+- **PocketBase:** Integrated backend for authentication, database, and file storage.
+- **Lucide-React:** Feather-light and customizable SVG icons.
+- **CSS:** Custom styling for components.
 
-## Getting Started
+## Deployment Guide
 
-Follow these instructions to get a copy of the project up and running on your local machine.
+To deploy your application and make it accessible to others, you need to deploy the backend (PocketBase) and the frontend (React app) separately.
 
-### Prerequisites
+### Step 1: Deploy the PocketBase Backend
 
-- Node.js and npm (or yarn) installed.
+Your PocketBase server needs to be hosted on a public server. For ease of use, we recommend a service like **PocketHost.io**, which offers a free tier for PocketBase hosting.
 
-### Installation
+1.  **Sign Up**: Go to [PocketHost.io](https://pockethost.io) and create a free account.
+2.  **Create a New Instance**: From your PocketHost dashboard, create a new PocketBase instance. Give it a name (e.g., `cognitive-crafts-app`).
+3.  **Get Your Backend URL**: PocketHost will provide you with a public URL for your backend, which will look something like this: `https://your-app-name.pockethost.io`. **Copy this URL.**
+4.  **Migrate Your Data (Optional)**: If you have existing data and collections in your local `pb_data` directory, you can upload a zip of this directory to your PocketHost instance via their admin dashboard. Otherwise, you can re-create your collections using the hosted admin UI.
 
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd cognitive-crafts-website
-   ```
+### Step 2: Update Your Frontend Code
 
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+Your React app needs to know the address of your now-public backend.
 
-### Available Scripts
+1.  **Edit the PocketBase configuration file**: Open the file `src/lib/pocketbase.js`.
+2.  **Change the URL**: On line 3, replace the local URL with the public backend URL you got from PocketHost.
 
-In the project directory, you can run the standard Create React App scripts:
+    ```javascript
+    // src/lib/pocketbase.js
 
-- `npm start` or `yarn start`: Runs the app in development mode.
-- `npm test` or `yarn test`: Launches the test runner.
-- `npm run build` or `yarn build`: Builds the app for production.
+    import PocketBase from 'pocketbase';
 
-## Website Sections and Features
+    // REPLACE THIS URL with your live backend URL
+    const pb = new PocketBase('https://your-app-name.pockethost.io/'); 
+    
+    pb.autoCancellation(false);
 
-The Cognitive Crafts website is structured into several key sections, accessible via the header navigation:
+    export default pb;
+    ```
 
-### Header
+### Step 3: Deploy the React Frontend
 
-A sticky navigation bar at the top of the page. Features include:
-- Company logo (using `icon.png` from `src/assets/images`)
-- Company name "Cognitive Crafts" with a dynamic blue to purple gradient.
-- Navigation links with smooth scrolling to respective sections.
-- Active link highlighting in blue based on the clicked section.
-- Theme toggle button (Light/Dark mode).
-- Responsive mobile menu.
+You can host your static React site on various platforms. **Netlify** and **Vercel** are excellent free options that can connect directly to your code repository.
 
-### Overview Section
+1.  **Choose a Hosting Provider**: Sign up for an account at [Netlify](https.com) or [Vercel](https://vercel.com).
+2.  **Connect Your Repository**: Link your GitHub, GitLab, or Bitbucket account and select this project's repository.
+3.  **Configure Build Settings**: The hosting provider will auto-detect that you have a React app. Ensure the build settings are configured as follows (this is usually the default):
+    -   **Build Command**: `npm run build`
+    -   **Publish Directory**: `build` (or `dist` if your project is configured differently)
+4.  **Deploy**: Click the deploy button. The service will build your application and host it on a public URL (e.g., `https://your-site-name.netlify.app`).
 
-The introductory section providing a brief overview of Cognitive Crafts. Features:
-- Large, gradient-colored heading: "Welcome to Cognitive Crafts".
-- Sub-text introducing the company.
-- Three key feature points (AI-Powered Solutions, Custom Development, Expert Consultation).
-- Animations using Framer Motion.
-
-### Approach Section
-
-Positioned between the Overview and Products sections, this section outlines the company's approach with key points.
-
-### Products Section
-
-Showcases the company's flagship products and upcoming projects. Features:
-- Details for "DrishyaScan" and "TestAura".
-- A list of "Upcoming Projects".
-- Animations using Framer Motion.
-
-### About Section
-
-Provides detailed information about the company. Features:
-- An "Our Story" timeline with key events.
-- A "Why AI + Java?" section detailing advantages with titles and descriptions.
-- Animations using Framer Motion.
-
-### Service Section
-
-Lists the various services offered by Cognitive Crafts.
-
-### Technology Section
-
-Details the technologies the company works with, categorized for clarity.
-
-### Leadership Section
-
-Introduces the leadership team (currently featuring Yash Desai). Features:
-- Profile picture (using `profileimage.png` from `src/assets/images`).
-- Name, title, and specialization.
-- Social media links (LinkedIn, GitHub).
-- Detailed sections on about, technical expertise, and key projects.
-- Animations using Framer Motion.
-
-### Insights Section
-
-Provides industry statistics and trends related to AI and Java development. Features:
-- A grid of insight cards with icons, categories, titles, and descriptions.
-- Data covering market growth, technology dominance, integration trends, developer demand, performance, and innovation.
-- Animations using Framer Motion.
-
-### Contact Section
-
-Allows users to get in touch with Cognitive Crafts. Features:
-- "Get In Touch" heading and descriptive text.
-- Contact information (Email, Phone, Address - placeholders initially, updated with provided details).
-- A contact form with fields for Name, Email, and Message.
-- Animations using Framer Motion.
-
-### Footer
-
-A simple footer at the bottom of the page. Features:
-- Copyright notice with the current year.
-- (Optional) Placeholder for social links.
-- Animations using Framer Motion.
-
-## Contributing
-
-Instructions for contributing to the project.
-
-## License
-
-Information about the project's license.
+Once deployment is complete, your app will be live and accessible to anyone with the link. Your frontend will be making live API calls to your public PocketBase backend.
