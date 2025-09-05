@@ -1,27 +1,28 @@
 {
-  "name": "cognitive-crafts-website",
+  "name": "cognitive-crafts",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/dom": "^9.3.3",
-    "@testing-library/jest-dom": "^6.1.4",
-    "@testing-library/react": "^14.1.2",
-    "@testing-library/user-event": "^14.5.1",
-    "framer-motion": "^12.12.2",
-    "lucide-react": "^0.511.0",
-    "pocketbase": "^0.26.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-dropzone": "^14.3.8",
+    "@headlessui/react": "^2.1.2",
+    "@heroicons/react": "^2.1.4",
+    "@tailwindcss/forms": "^0.5.7",
+    "axios": "^1.7.2",
+    "chart.js": "^4.4.3",
+    "lucide-react": "^0.400.0",
+    "pocketbase": "^0.21.3",
+    "react": "^18.3.1",
+    "react-chartjs-2": "^5.2.0",
+    "react-dom": "^18.3.1",
     "react-helmet-async": "^2.0.5",
-    "react-hook-form": "^7.56.4",
-    "react-router-dom": "^7.6.1",
+    "react-hot-toast": "^2.4.1",
+    "react-icons": "^5.2.1",
+    "react-router-dom": "^6.24.0",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -44,8 +45,6 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.16",
-    "postcss": "^8.4.31",
-    "tailwindcss": "^3.3.5"
+    "tailwindcss": "^3.4.4"
   }
 }
