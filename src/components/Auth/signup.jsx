@@ -3,10 +3,12 @@ import './signup.css';
 import { BookOpen, Download, BarChart2 } from 'lucide-react';
 import logo from '../../assets/images/logo05.png';
 import pb from '../../lib/pocketbase' // make sure pocketbase.js is in src/
+
 const SignupPage = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        whatsapp_no: '', // Added optional WhatsApp field
         password: '',
         confirmPassword: '',
     });
@@ -32,18 +34,27 @@ const SignupPage = () => {
         try {
             setLoading(true);
 
-            const record = await pb.collection('users').create({
-                username: formData.name,
+            // FIX: Added `name` field to be stored in the database.
+            // ADD: Added `whatsapp_no` field.
+            const data = {
+                username: formData.name, // Using name as username as per original logic
+                name: formData.name,       // Storing name in the 'name' field
                 email: formData.email,
+                emailVisibility: true,
                 password: formData.password,
                 passwordConfirm: formData.confirmPassword,
-            });
+                whatsapp_no: formData.whatsapp_no, // Storing optional whatsapp number
+            };
+
+            const record = await pb.collection('users').create(data);
 
             setSuccess("Account created successfully! Please log in.");
-            setFormData({ name: '', email: '', password: '', confirmPassword: '' });
+            // Clear all form fields on success
+            setFormData({ name: '', email: '', whatsapp_no: '', password: '', confirmPassword: '' });
         } catch (err) {
             console.error(err);
-            setError(err.message || "Something went wrong. Try again.");
+            const errorMessage = err.message || "Something went wrong. A user with this name may already exist.";
+            setError(errorMessage);
         } finally {
             setLoading(false);
         }
@@ -92,6 +103,14 @@ const SignupPage = () => {
                             onChange={handleChange}
                             required
                         />
+                        {/* ADD: New optional input for WhatsApp Number */}
+                        <input
+                            type="tel"
+                            name="whatsapp_no"
+                            placeholder="WhatsApp Number (Optional)"
+                            value={formData.whatsapp_no}
+                            onChange={handleChange}
+                        />
                         <input
                             type="password"
                             name="password"
@@ -111,7 +130,7 @@ const SignupPage = () => {
                         <button type="submit" className="signup-button" disabled={loading}>
                             {loading ? "Signing Up..." : "Sign Up & Start Learning"}
                         </button>
-                        <div className="divider">──────── or sign up with ────────</div>
+                        {/* <div className="divider">──────── or sign up with ────────</div> */}
                         <button type="button" className="google-signup-button">
                             Continue with Google
                         </button>

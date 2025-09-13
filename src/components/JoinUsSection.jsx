@@ -1,60 +1,131 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import toast from 'react-hot-toast';
+import pb from '../lib/pocketbase'; // Assuming you have a pocketbase client instance exported from here
 
 const JoinUsSection = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    role: 'Learner',
+    message: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    const loadingToast = toast.loading('Sending your message...');
+
+    try {
+      // Make sure you have a collection named 'contact_messages' in PocketBase
+      // with fields: name (text), email (email), role (text), message (text)
+      await pb.collection('contact_messages').create(formData);
+
+      toast.success('Message sent successfully! We will get back to you soon.', { id: loadingToast });
+      setFormData({ name: '', email: '', role: 'Learner', message: '' });
+    } catch (error) {
+      console.error("Failed to send message:", error);
+      toast.error('Failed to send message. Please try again later.', { id: loadingToast });
+    }
+    setIsSubmitting(false);
+  };
+
   return (
     <section id="joinus" className="py-20 bg-white dark:bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-8">Join Us</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-4"
+        >
+          Get in Touch
+        </motion.h2>
         <p className="text-center text-lg text-gray-700 dark:text-gray-200 mb-12 max-w-2xl mx-auto">
-          Whether you want to learn, support, or collaborate — there’s a place for you here.
+          Whether you want to learn, support, or collaborate — there’s a place for you here. Drop us a line!
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-          {/* Left: For Supporters */}
-          <div className="bg-white/60 dark:bg-white/10 backdrop-blur rounded-xl shadow-lg p-8 border border-white/40 dark:border-white/20 flex flex-col items-center">
-            <h3 className="text-2xl font-bold text-pink-600 dark:text-pink-400 mb-4">For Supporters</h3>
-            <p className="text-gray-700 dark:text-gray-200 mb-6 text-center">Help amplify our mission</p>
-            <div className="w-full space-y-6">
-              <div className="bg-white/80 dark:bg-white/20 rounded-lg p-4 flex flex-col items-center border border-white/30">
-                <span className="font-semibold text-lg text-pink-700 dark:text-pink-300 mb-2">Volunteers</span>
-                <span className="text-gray-600 dark:text-gray-200 mb-2 text-center">Mentor, teach, or help us grow</span>
-                <button className="bg-gradient-to-r from-pink-500 to-orange-400 text-white font-semibold rounded-xl px-6 py-2 text-base shadow-md hover:shadow-lg transition transform hover:scale-105">Help Us Grow</button>
+        <div className="max-w-2xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="bg-white/60 dark:bg-white/10 backdrop-blur rounded-xl shadow-lg p-8 border border-white/40 dark:border-white/20"
+          >
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-gray-900 dark:text-gray-200">Full Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  required
+                  value={formData.name}
+                  onChange={handleChange}
+                  className="mt-1 block w-full bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm text-gray-900 dark:text-white"
+                />
               </div>
-              <div className="bg-white/80 dark:bg-white/20 rounded-lg p-4 flex flex-col items-center border border-white/30">
-                <span className="font-semibold text-lg text-yellow-700 dark:text-yellow-300 mb-2">Partners</span>
-                <span className="text-gray-600 dark:text-gray-200 mb-2 text-center">Hire skilled LGBTQ+ tech talent</span>
-                <button className="bg-gradient-to-r from-yellow-400 to-green-400 text-white font-semibold rounded-xl px-6 py-2 text-base shadow-md hover:shadow-lg transition transform hover:scale-105">Hire from Us</button>
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-gray-900 dark:text-gray-200">Email Address</label>
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className="mt-1 block w-full bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm text-gray-900 dark:text-white"
+                />
               </div>
-              <div className="bg-white/80 dark:bg-white/20 rounded-lg p-4 flex flex-col items-center border border-white/30">
-                <span className="font-semibold text-lg text-red-700 dark:text-red-300 mb-2">❤ Donors</span>
-                <span className="text-gray-600 dark:text-gray-200 mb-2 text-center">Support inclusive tech training and placements</span>
-                <button className="bg-gradient-to-r from-pink-500 to-red-500 text-white font-semibold rounded-xl px-6 py-2 text-base shadow-md hover:shadow-lg transition transform hover:scale-105">Support Our Mission</button>
+              <div>
+                <label htmlFor="role" className="block text-sm font-medium text-gray-900 dark:text-gray-200">I am interested as a...</label>
+                <select
+                  id="role"
+                  name="role"
+                  required
+                  value={formData.role}
+                  onChange={handleChange}
+                  className="mt-1 block w-full bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm text-gray-900 dark:text-white"
+                >
+                  <option>Learner</option>
+                  <option>Supporter</option>
+                  <option>Partner</option>
+                </select>
               </div>
-            </div>
-          </div>
-          {/* Right: For Learners */}
-          <div className="bg-white/60 dark:bg-white/10 backdrop-blur rounded-xl shadow-lg p-8 border border-white/40 dark:border-white/20 flex flex-col items-center">
-            <h3 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4">For Learners</h3>
-            <p className="text-gray-700 dark:text-gray-200 mb-6 text-center">Become part of our inclusive learning community</p>
-            <div className="w-full space-y-6">
-              <div className="bg-white/80 dark:bg-white/20 rounded-lg p-4 flex flex-col items-center border border-white/30">
-                <span className="font-semibold text-lg text-blue-700 dark:text-blue-300 mb-2">Join as a Student</span>
-                <span className="text-gray-600 dark:text-gray-200 mb-2 text-center">Free training, real projects, paid work</span>
-                <button className="bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-semibold rounded-xl px-6 py-2 text-base shadow-md hover:shadow-lg transition transform hover:scale-105">Start Learning</button>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-900 dark:text-gray-200">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  className="mt-1 block w-full bg-white/50 dark:bg-gray-800/50 border-gray-300 dark:border-gray-600 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-pink-500 focus:border-pink-500 sm:text-sm text-gray-900 dark:text-white"
+                ></textarea>
               </div>
-              <div className="bg-white/80 dark:bg-white/20 rounded-lg p-4 flex flex-col items-center border border-white/30">
-                <span className="font-semibold text-lg text-green-700 dark:text-green-300 mb-2">Become a Volunteer</span>
-                <span className="text-gray-600 dark:text-gray-200 mb-2 text-center">Give back and grow with us</span>
-                <button className="bg-gradient-to-r from-green-400 to-blue-400 text-white font-semibold rounded-xl px-6 py-2 text-base shadow-md hover:shadow-lg transition transform hover:scale-105">Join as Volunteer</button>
+              <div className="text-center">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-gradient-to-r from-pink-500 to-yellow-400 text-white font-semibold rounded-xl px-8 py-3 text-lg shadow-md hover:shadow-lg transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Send Message'}
+                </button>
               </div>
-            </div>
-          </div>
-        </div>
-        <div className="text-center mt-12">
-          <span className="text-xl font-semibold text-pink-600 dark:text-pink-400">✨ Your identity is valid. Your future is bright. Your journey starts here.</span>
+            </form>
+          </motion.div>
         </div>
       </div>
     </section>
   );
 };
 
-export default JoinUsSection; 
+export default JoinUsSection;
